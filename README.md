@@ -1,4 +1,4 @@
-# [DiffPose: Video Setting)
+# [DiffPose: Video Setting]
 [[Paper]](https://arxiv.org/abs/2211.16940) | [[Project Page]](https://GONGJIA0208.github.io/Diffpose/) | [[SUTD-VLG Lab]](https://github.com/sutdcv)
 
 
