@@ -213,6 +213,10 @@ class Diffpose(object):
                 targets_uvxyz, targets_noise_scale, targets_3d = \
                     targets_uvxyz.to(self.device), targets_noise_scale.to(self.device), targets_3d.to(self.device)
                 
+                input_noise_scale = torch.tensor([0.5,0.5,1,1,1])
+                input_noise_scale = input_noise_scale.repeat(targets_uvxyz.shape[0], targets_uvxyz.shape[1], 1).cuda()
+
+                targets_noise_scale = input_noise_scale
                 # generate nosiy sample based on seleted time t and beta
                 n = targets_3d.size(0)
                 x = targets_uvxyz
@@ -335,7 +339,7 @@ class Diffpose(object):
                 inputs_uv = inputs_2d.reshape(N_b*P_b, J_b, D_b-1).clone()
 
                 input_uvxyz = torch.cat([inputs_uv,inputs_xyz],dim=2)
-                input_noise_scale = torch.tensor([0.1,0.1,1,1,1])
+                input_noise_scale = torch.tensor([0.01,0.01,1,1,1])
                 input_noise_scale = input_noise_scale.repeat(N_b*P_b, J_b, 1).cuda()
 
 
@@ -499,4 +503,6 @@ class Diffpose(object):
         print('Protocol #2 (P-MPJPE) action-wise average:', round(np.mean(errors_p2), 1), 'mm')
         print('Protocol #3 (N-MPJPE) action-wise average:', round(np.mean(errors_p3), 1), 'mm')
         print('Velocity      (MPJVE) action-wise average:', round(np.mean(errors_vel), 2), 'mm')
+
+
 
