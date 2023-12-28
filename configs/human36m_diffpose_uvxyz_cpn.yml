@@ -1,7 +1,7 @@
 data:
     dataset: "human36m"
     dataset_path: "./data/data_3d_h36m.npz"
-    dataset_path_train_2d: "./data/data_2d_h36m_cpn_gmm.npz"
+    dataset_path_train_2d: "./data/data_2d_h36m_cpn_ft_h36m_dbb_gmm.npz"
     dataset_path_test_2d: "./data/data_2d_h36m_cpn_ft_h36m_dbb.npz"
     num_joints: 17
     num_workers: 32
